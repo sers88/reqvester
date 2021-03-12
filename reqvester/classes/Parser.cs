@@ -21,7 +21,7 @@ namespace Reqvester
             List<string> pageList = new List<string>();
 
             foreach (var word in phrase)
-                if (word != String.Empty) pageList.Add(word);
+                if (word != String.Empty) pageList.Add(word.ToUpper());
 
             return pageList;
         }

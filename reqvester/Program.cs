@@ -11,7 +11,10 @@ namespace Reqvester
             var textBody = new Parser();
             var countWords = new Counter();
 
-            var v = await loader.GetPage("https://sers88.github.io/");
+            Console.WriteLine("Введите адрес сайта. В формате https://имя_сайта");
+            string site = Console.ReadLine();
+
+            var v = await loader.GetPage(site);
             var listV = textBody.GetBody(v);
             countWords.wordsCount(listV);
         }
