@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Reqvester
@@ -9,8 +8,8 @@ namespace Reqvester
     {
         public List<string> GetBody(string page)
         {
-            int firstBody = page.IndexOf("<body>") + "<body>".Length;
-            int lastBody = page.IndexOf("</body>");
+            var firstBody = page.IndexOf("<body>") + "<body>".Length;
+            var lastBody = page.IndexOf("</body>");
             page = page.Substring(firstBody, lastBody - firstBody);
             
             page = Regex.Replace(page, "<.*?>", String.Empty);

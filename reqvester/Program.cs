@@ -10,13 +10,29 @@ namespace Reqvester
             var loader = new PageLoader();
             var textBody = new Parser();
             var countWords = new Counter();
+            var shower = new Show();
 
-            Console.WriteLine("Введите адрес сайта. В формате https://имя_сайта");
-            string site = Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Введите адрес сайта. В формате https://имя_сайта");
+                var site = Console.ReadLine();
 
-            var v = await loader.GetPage(site);
-            var listV = textBody.GetBody(v);
-            countWords.wordsCount(listV);
+                if (site.ToUpper() == "EXIT") break;
+
+                try
+                {
+                    var strSite = await loader.GetPage(site);
+                    var listSite = textBody.GetBody(strSite);
+                    var dicSite = countWords.wordsCount(listSite);
+                    shower.ShowText(dicSite);
+
+                }
+                catch
+                {
+                    Console.WriteLine("Введите верное имя сайта!\n");
+                }
+
+            }
         }
         
     }

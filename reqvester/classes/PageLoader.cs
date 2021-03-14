@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Reqvester
 {
     public class PageLoader
     {
-        private readonly HttpClient client = new HttpClient();
+        private readonly HttpClient _client = new HttpClient();
 
         public async Task<string> GetPage(string page)
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync(page);
+                HttpResponseMessage response = await _client.GetAsync(page);
                 response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
+                var responseBody = await response.Content.ReadAsStringAsync();
 
                 return responseBody;
             }

@@ -1,32 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Reqvester
 {
     public class Counter
     {
-        public void wordsCount(List<string> words)
+        public Dictionary<string, int> wordsCount(List<string> words)
         {
-            Dictionary<string, int> bufer = new Dictionary<string, int>();
+            Dictionary<string, int> buffer = new Dictionary<string, int>();
 
-            for(int i = 1; i < words.Count; i++)
+            for(var i = 1; i < words.Count; i++)
             {
-                string word = words[i];
-                if (bufer.ContainsKey(word))
+                var word = words[i];
+                if (buffer.ContainsKey(word))
                 {
-                    int count = bufer[word];
+                    int count = buffer[word];
                     count++;
-                    bufer[word] = count;
+                    buffer[word] = count;
                 }
                 else
                 {
-                    bufer.Add(word, 1);
+                    buffer.Add(word, 1);
                 }
             }
 
-            foreach (var buf in bufer)
-                Console.WriteLine("{0} - {1}", buf.Key, buf.Value);
+            return buffer;
         }
     }
 }
