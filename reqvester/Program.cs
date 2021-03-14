@@ -10,7 +10,8 @@ namespace Reqvester
             var loader = new PageLoader();
             var textBody = new Parser();
             var countWords = new Counter();
-            var shower = new Show();
+            //var shower = new Show();
+            var writeFile = new Writer();
 
             while (true)
             {
@@ -24,7 +25,7 @@ namespace Reqvester
                     var strSite = await loader.GetPage(site);
                     var listSite = textBody.GetBody(strSite);
                     var dicSite = countWords.wordsCount(listSite);
-                    shower.ShowText(dicSite);
+                    await writeFile.WriteToFile(dicSite);
 
                 }
                 catch
