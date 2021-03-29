@@ -3,9 +3,13 @@ using System.Collections.Generic;
 
 namespace Reqvester
 {
-    public class Counter
+    interface ICounter
     {
-        public Dictionary<string, int> wordsCount(List<string> words)
+        Dictionary<string, int> WordsCount(List<string> words);
+    }
+    public class Counter:ICounter
+    {
+        public Dictionary<string, int> WordsCount(List<string> words)
         {
             Dictionary<string, int> buffer = new Dictionary<string, int>();
 

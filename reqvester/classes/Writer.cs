@@ -5,7 +5,11 @@ using System.Collections.Generic;
 
 namespace Reqvester
 {
-    public class Writer
+    interface IWriter
+    {
+        Task WriteToFile(Dictionary<string, int> buffer);
+    }
+    public class Writer:IWriter
     {
         public async Task WriteToFile(Dictionary<string, int> buffer)
         {
@@ -14,7 +18,6 @@ namespace Reqvester
 
             foreach (var buf in buffer)
             {
-   
                 lines[i] = buf.Key + " - " + buf.Value;
                 i++;
             }

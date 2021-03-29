@@ -3,7 +3,11 @@ using System.Threading.Tasks;
 
 namespace Reqvester
 {
-    public class PageLoader
+    interface IPageLoader
+    {
+        Task<string> GetPage(string page);
+    }
+    public class PageLoader:IPageLoader
     {
         private readonly HttpClient _client = new HttpClient();
 

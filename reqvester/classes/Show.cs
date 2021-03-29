@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 namespace Reqvester
 {
-    public class Show
+    interface IShow
+    {
+        void ShowText(Dictionary<string, int> buffer);
+    }
+    public class Show:IShow
     {
         public void ShowText(Dictionary<string, int> buffer)
         {
