@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Reqvester
 {
-    public class Show
+    interface IShow
+    {
+        void ShowText(Dictionary<string, int> buffer);
+    }
+    public class Show:IShow
     {
         public void ShowText(Dictionary<string, int> buffer)
         {

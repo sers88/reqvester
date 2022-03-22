@@ -7,10 +7,11 @@ namespace Reqvester
     {
         static async Task Main()
         {
-            var loader = new PageLoader();
-            var textBody = new Parser();
-            var countWords = new Counter();
-            var shower = new Show();
+            IPageLoader loader = new PageLoader();
+            IParser textBody = new Parser();
+            ICounter countWords = new Counter();
+            IShow shower = new Show();
+            IWriter writeFile = new Writer();
 
             while (true)
             {
@@ -23,8 +24,9 @@ namespace Reqvester
                 {
                     var strSite = await loader.GetPage(site);
                     var listSite = textBody.GetBody(strSite);
-                    var dicSite = countWords.wordsCount(listSite);
+                    var dicSite = countWords.WordsCount(listSite);
                     shower.ShowText(dicSite);
+                    await writeFile.WriteToFile(dicSite);
 
                 }
                 catch
